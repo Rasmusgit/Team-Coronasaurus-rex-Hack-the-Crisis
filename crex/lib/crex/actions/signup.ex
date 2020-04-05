@@ -10,6 +10,7 @@ defmodule Crex.Actions.Signup do
   def validate(changeset) do
     changeset
     |> validate_required([:email, :password])
+    |> validate_format(:email, ~r/@/)
   end
 
   defp process(record, _ctx) do
