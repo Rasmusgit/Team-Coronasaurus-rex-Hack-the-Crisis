@@ -18,6 +18,10 @@ config :crex, CrexWeb.Endpoint,
   ],
   secret_key_base: secret_key_base
 
+config :crex, Crex.Mailer,
+  adapter: Swoosh.Adapters.Sendgrid,
+  api_key: "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"
+
 # ## Using releases (Elixir v1.9+)
 #
 # If you are doing OTP releases, you need to instruct Phoenix

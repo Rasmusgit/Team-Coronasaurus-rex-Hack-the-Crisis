@@ -40,7 +40,7 @@ defmodule Crex.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:faker, "~> 0.13.0", only: :dev},
+      {:faker, "~> 0.13.0", only: [:dev, :test]},
       {:fuzzy_compare, "~> 1.0"},
       {:swoosh, "~> 0.25.1"},
       {:cubdb, "~> 0.17"},
@@ -48,7 +48,7 @@ defmodule Crex.MixProject do
       {:mix_test_watch, "~> 1.0.2", only: :dev, runtime: false},
       {:bcrypt_elixir, "~> 2.2"},
       {:httpoison, "~> 1.0"},
-      {:ecto, "~> 3.0"},
+      {:ecto, "~> 3.0"}
     ]
   end
 

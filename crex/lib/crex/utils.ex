@@ -1,6 +1,6 @@
 defmodule Crex.Utils do
-  def generate_id() do
-    :crypto.strong_rand_bytes(20)
+  def generate_id(length \\ 20) do
+    :crypto.strong_rand_bytes(length)
     |> Base.encode32()
   end
 

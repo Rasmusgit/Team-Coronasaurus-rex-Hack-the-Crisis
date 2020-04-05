@@ -29,13 +29,14 @@ defmodule CrexWeb.Router do
     pipe_through(:api)
     resources("/businesses", BusinessController, only: [:index, :show])
     post("/session", SessionController, :create)
+    post("/signup", CommandController, :execute, assigns: %{command: Crex.Actions.Signup})
   end
 
   scope "/api", CrexWeb.API do
     pipe_through(:protected_api)
     resources("/gift_cards", GiftCardController)
     get("/session", SessionController, :show)
-    get("/profiles/me", ProfileController, :me)
+    post("/:command", CommandController, :execute)
   end
 
   if Mix.env() == :dev do

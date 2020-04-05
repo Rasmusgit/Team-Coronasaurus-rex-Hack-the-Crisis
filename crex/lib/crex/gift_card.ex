@@ -8,7 +8,7 @@ defmodule Crex.GiftCard do
     %__MODULE__{
       business: Keyword.fetch!(opts, :business),
       owner: Keyword.fetch!(opts, :owner),
-      identifier: generate_id(),
+      identifier: Crex.Utils.generate_id(5),
       createdAt: DateTime.utc_now(),
       transactions: []
     }
@@ -45,10 +45,5 @@ defmodule Crex.GiftCard do
 
   defp up_version(gift_card) do
     %{gift_card | version: gift_card.version + 1}
-  end
-
-  def generate_id() do
-    :crypto.strong_rand_bytes(20)
-    |> Base.encode32()
   end
 end

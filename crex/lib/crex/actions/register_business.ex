@@ -2,10 +2,10 @@ defmodule Crex.Actions.RegisterBusiness do
   use Crex.Action
 
   embedded_schema do
-    field :name, InputTypes.TrimmedString
-    field :description, InputTypes.TrimmedString
-    field :city, InputTypes.UpperCaseString
-    field :image_url,InputTypes.TrimmedString
+    field(:name, InputTypes.TrimmedString)
+    field(:description, InputTypes.TrimmedString)
+    field(:city, InputTypes.UpperCaseString)
+    field(:image_url, InputTypes.TrimmedString)
   end
 
   def validate(changeset) do
@@ -13,7 +13,7 @@ defmodule Crex.Actions.RegisterBusiness do
     |> validate_required([:name, :city])
   end
 
-  def process(record) do
+  def process(record, _ctx) do
     Crex.Businesses.create(Map.from_struct(record))
   end
 end

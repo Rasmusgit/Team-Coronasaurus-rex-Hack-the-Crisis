@@ -25,9 +25,5 @@ config :phoenix, :json_library, Jason
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
-
-config :crex, Crex.Mailer,
-  adapter: Swoosh.Adapters.Sendgrid,
-  api_key: "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"
-
+config :crex, Crex.Mailer, adapter: Swoosh.Adapters.Local
 import_config "#{Mix.env()}.exs"

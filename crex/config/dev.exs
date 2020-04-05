@@ -57,8 +57,6 @@ config :phoenix, :stacktrace_depth, 20
 
 # Initialize plugs at runtime for faster development compilation
 
-config :crex, Crex.Mailer, adapter: Swoosh.Adapters.Local
-
 # to run the preview server together as part of your app
 config :swoosh, serve_mailbox: true
 

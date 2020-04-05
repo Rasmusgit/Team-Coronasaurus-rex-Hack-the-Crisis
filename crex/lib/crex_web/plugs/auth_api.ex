@@ -10,20 +10,22 @@ defmodule CrexWeb.Plugs.AuthAPI do
     |> load_user()
   end
 
-  defp load_user(%{req_cookies: %{ "access_token" => accces_token }} = conn) do
-    IO.inspect(accces_token, label: :access_token)
+  defp load_user(%{req_cookies: %{"access_token" => accces_token}} = conn) do
     with {:ok, token} <- Crex.AccessToken.verify(accces_token) do
       {:ok, user} = Crex.Users.find(token.user_id)
+
       conn
       |> Plug.Conn.assign(:access_token, token)
       |> Plug.Conn.assign(:current_user, user)
     else
       error ->
         Logger.debug("authentication failed #{inspect(error)}")
+
         conn
         |> not_authenticated()
     end
   end
+
   defp load_user(conn), do: not_authenticated(conn)
 
   defp not_authenticated(conn) do

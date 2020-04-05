@@ -1,18 +1,5 @@
 defmodule ParamSchema do
   defmodule ValidationHelpers do
-    def validate_subset1(changeset, key, values) do
-      Ecto.Changeset.get_field(changeset, key)
-      |> case do
-        nil ->
-          changeset
-
-        selected_values ->
-          Enum.split_with(selected_values, &Enum.member?(values, &1))
-          |> IO.inspect(label: "hello")
-
-          changeset
-      end
-    end
   end
 
   defmodule ValidationError do

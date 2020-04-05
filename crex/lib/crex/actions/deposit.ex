@@ -2,9 +2,9 @@ defmodule Crex.Actions.Deposit do
   use Crex.Action
 
   embedded_schema do
-    field :business, :string
-    field :owner, :string
-    field :amount, :integer
+    field(:business, :string)
+    field(:owner, :string)
+    field(:amount, :integer)
   end
 
   def validate(changeset) do
@@ -34,17 +34,17 @@ defmodule Crex.Actions.Deposit do
     end)
   end
 
-  defp process(deposit) do
-      {:ok, existing_cards} = Crex.Storage.get_cards_for_user(deposit.owner)
+  defp process(deposit, _ctx) do
+    {:ok, existing_cards} = Crex.Storage.get_cards_for_user(deposit.owner)
 
-      card =
-        Enum.find(
-          existing_cards,
-          Crex.GiftCard.new(business: deposit.business, owner: deposit.owner),
-          fn card -> card.business === deposit.business end
-        )
+    card =
+      Enum.find(
+        existing_cards,
+        Crex.GiftCard.new(business: deposit.business, owner: deposit.owner),
+        fn card -> card.business === deposit.business end
+      )
 
-      {:ok, card} = Crex.GiftCard.deposit(card, deposit.amount)
-      Crex.Storage.store(card)
-    end
+    {:ok, card} = Crex.GiftCard.deposit(card, deposit.amount)
+    Crex.Storage.store(card)
+  end
 end

@@ -2,11 +2,10 @@ defmodule Crex.Actions.Redeem do
   use Crex.Action
 
   embedded_schema do
-    field :gift_card, InputTypes.TrimmedString
-    field :amount, :integer
-    field :description, InputTypes.TrimmedString
+    field(:gift_card, InputTypes.TrimmedString)
+    field(:amount, :integer)
+    field(:description, InputTypes.TrimmedString)
   end
-
 
   def validate(changeset) do
     changeset
@@ -14,7 +13,6 @@ defmodule Crex.Actions.Redeem do
     |> validate_number(:amount, greater_than: 0)
   end
 
-  defp process(action) do
-
+  defp process(action, _ct) do
   end
 end

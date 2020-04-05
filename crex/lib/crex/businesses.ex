@@ -12,12 +12,14 @@ defmodule Crex.Businesses do
     end
   end
 
-  @namespace :business
-
   def create(params) do
     id = Crex.Utils.generate_id()
-    business = Crex.Business.create!(Map.from_struct() |> Map.put(id: id))
-    Crex.Storage.put({:business, business})
+
+    business =
+      Crex.Business.create!(params)
+      |> Map.put(:id, id)
+
+    Crex.Storage.put({:business, id}, business)
     {:ok, business}
   end
 
@@ -54,9 +56,6 @@ defmodule Crex.Businesses do
       end)
       |> wrap_ok()
     end
-  end
-
-  defp drop_business(business) do
   end
 
   defp wrap_ok(value), do: {:ok, value}

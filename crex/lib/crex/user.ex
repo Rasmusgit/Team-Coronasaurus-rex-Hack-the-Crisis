@@ -1,14 +1,15 @@
 defmodule Crex.User do
   use ParamSchema
+  @derive {Jason.Encoder, only: [:id, :name, :phone, :email, :registered_at]}
 
   embedded_schema do
-    field :id, :string
-    field :name, :string
-    field :phone, :string
-    field :email, :string
-    field :password, :string
-    field :registered_at, :utc_datetime
-    field :businesses, {:map, :string}, default: []
+    field(:id, :string)
+    field(:name, :string)
+    field(:phone, :string)
+    field(:email, :string)
+    field(:password, :string)
+    field(:registered_at, :utc_datetime)
+    field(:businesses, {:map, :string}, default: [])
   end
 
   def validate(changest) do
