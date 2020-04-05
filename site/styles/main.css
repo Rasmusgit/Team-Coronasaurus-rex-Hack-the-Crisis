@@ -15,15 +15,25 @@ body{
     top:0;
     left: 0;
     display: flex;
+    flex-direction: row;
     width: 100vw;
-    height: 8vh;
+    height: 6vh;
     box-shadow: 0 0.25vh 0.45vh rgba(0, 0, 0, 0.5);
     z-index: 999999999;
+    align-content: center;
+    justify-self: start;
+   
+}
+
+.header p{
+    font-size: 1em;
+    padding-top: 0;
 }
 
 .resturant-page .header{
     background-color: rgba(0, 0, 0, 0);
     box-shadow: none;
+    color: #ffffff;
 }
 
 
@@ -36,30 +46,34 @@ body{
 }
 
 .avatar{
-    width: 6vh;
-    height: 6vh;
-    margin-left: 2vw;
+    width: 4vh;
+    height: 4vh;
+    margin-left: 1vw;
     margin-top: 0.8vh;
     box-sizing: content-box;
-    background-image: url("../res/images/person.jpg");
+    background-image: url("../res/images/logo.png");
     background-position: center;
-    border-radius: 50%;
-    display: inline-block;
-    border: 2.5px solid #074F51;
+    background-repeat: no-repeat;
+    /* border-radius: 50%; */
+    /* display: inline-block; */
+    /* border: 2.5px solid #074F51; */
 }
 
 .menu{
     position: absolute;
     right: 0;
     top:0;
-    width: 8vh;
-    height: 8vh;
+    width: 6vh;
+    height: 6vh;
     color: #074F51;
     text-decoration: none;
-    font-size: 4vh;
+    font-size: 3vh;
     text-align: center;
-    
 
+}
+
+.resturant-page .menu{
+    color: #fff;
 }
 
 .menu svg{
@@ -68,7 +82,7 @@ body{
 }
 
 .content{
-    margin-top: 8vh;
+    margin-top: 6vh;
     position: relative;
     width: 100%;
     z-index: 0;
@@ -182,7 +196,7 @@ textarea:focus, input:focus, select:focus{
     
 }
 
-.search-area-content input:first-child {
+.search-area-content input:first-child, input[type=email], input[type=text],input[type=password] {
     width: 100%;
     color: #074F51;
     height: 35px;
@@ -238,6 +252,23 @@ textarea:focus, input:focus, select:focus{
     transition: all 0.2s;
 }
 
+.resturant-details-container-buybox-buyGiftCardButton{
+    display:inline-block;
+    padding:0.6em 1.2em;
+    border-radius:2em;
+    box-sizing: border-box;
+    text-decoration:none;
+    color:#FFFFFF;
+    background-color:#E96852;
+    text-align:center;
+    transition: all 0.2s;
+    font-size: 1.4em;
+    position: absolute;
+    bottom:-1em;
+    left: 2em;
+    right: 2em;
+}
+
 .resturant-details-container{
     width: 80%;
     margin-left: auto;
@@ -247,11 +278,13 @@ textarea:focus, input:focus, select:focus{
 }
 
 .resturant-details-container-info{
-
+    padding-bottom: 1em;
 }
 
 .resturant-details-container-info-title{
     font-size: 1.8em;
+    margin-top: 0.6em;
+    margin-bottom: 0.2em;
 }
 
 .resturant-details-container-info-location{
@@ -263,35 +296,42 @@ textarea:focus, input:focus, select:focus{
 }
 
 .resturant-details-container-buybox{
-    width: 80%;
+    width: calc(80% - 2em);
+    padding: 1em;
+    padding-bottom: 3em;
     margin-left: auto;
     margin-right: auto;
     display: flex;
     flex-direction: column;
     background-color: rgba(7,79,81, 0.08);
     border-radius:25px;
+    position: relative;
 }
 
 .resturant-details-container-buybox-pricecontrol{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+    border-radius: 40px;
+    background-color: #ffffff;
+    height: 32px;
+    padding: 4px;
+
 }
 
-.resturant-details-container-buybox-pricecontrol{
-}
 .resturant-details-container-buybox-pricecontrol a{
-    background: #97c83e;
+    background: #074F51;
     text-align: center;
-    width: 149px;
-    height: 148px;
+    width: 32px;
+    height: 32px;
     border-radius: 100%;
     display: inline-block;
-    font-size: 35px;
+    font-size: 20px;
     vertical-align: middle;
     color: white;
-    font-weight: bold;
     text-decoration: none
+    
 }
 
 .resturant-details-container-buybox-pricecontrol a span {
@@ -314,6 +354,7 @@ textarea:focus, input:focus, select:focus{
     border-color: #074F51;
     border-style: solid;
     text-indent: 20px;
+    margin-top: 1em;
 }
 
 
