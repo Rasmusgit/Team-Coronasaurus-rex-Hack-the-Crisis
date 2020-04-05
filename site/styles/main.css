@@ -1,0 +1,414 @@
+
+body{
+    padding: 0;
+    margin: 0;
+    background-color: #F8F6F1;
+    font-family: crete-round, serif;
+    font-weight: 400;
+    font-style: normal;
+    min-height: 100vh;
+}
+
+.header{
+    background-color: #F8F6F1;
+    position:fixed;
+    top:0;
+    left: 0;
+    display: flex;
+    width: 100vw;
+    height: 8vh;
+    box-shadow: 0 0.25vh 0.45vh rgba(0, 0, 0, 0.5);
+    z-index: 999999999;
+}
+
+.resturant-page .header{
+    background-color: rgba(0, 0, 0, 0);
+    box-shadow: none;
+}
+
+
+
+.footer{
+    /* margin-top: 10vh; */
+    background-color: #ffffff;
+    width: 100vw;
+    height: 30vh;
+}
+
+.avatar{
+    width: 6vh;
+    height: 6vh;
+    margin-left: 2vw;
+    margin-top: 0.8vh;
+    box-sizing: content-box;
+    background-image: url("../res/images/person.jpg");
+    background-position: center;
+    border-radius: 50%;
+    display: inline-block;
+    border: 2.5px solid #074F51;
+}
+
+.menu{
+    position: absolute;
+    right: 0;
+    top:0;
+    width: 8vh;
+    height: 8vh;
+    color: #074F51;
+    text-decoration: none;
+    font-size: 4vh;
+    text-align: center;
+    
+
+}
+
+.menu svg{
+    position:relative;
+    top: calc(50% - 2vh);
+}
+
+.content{
+    margin-top: 8vh;
+    position: relative;
+    width: 100%;
+    z-index: 0;
+}
+
+.resturant-page .content{
+    margin-top: 0;
+}
+
+.landing-img{
+    position: relative;
+    width: 100%;
+    height: 60vh;
+    background-image: url("../res/images/landing-image.jpg");
+    background-position: center;
+    background-size: cover;
+    opacity: 0.3;
+    background-attachment: fixed;
+    z-index: 0;
+}
+
+.resturant-page .landing-img{
+    background-image: url("../res/images/food-img.jpg");
+    opacity: 1;
+    border-bottom-right-radius:120px;
+    height: 50vh;
+    background-repeat: no-repeat;
+}
+
+.landing-text{
+    position: absolute;
+    top: 20vh;
+    left: 0;
+    right: 0;
+    margin: auto;
+    color: #074F51;
+    font-size: 6vh;
+    width: 80vw;
+    max-height: 60vh;
+    z-index: 0;
+}
+
+.instructions{
+    margin-top: 10vh;
+    width: 100%;
+}
+
+.instructions h1{
+    text-align: center;
+    color: #074F51;
+}
+.instructions-list{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.instructions-list-item{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    column-gap: 4vw;
+}
+
+.title{
+    font-weight: bold;
+}
+
+
+.step{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.step1{
+    background-image: url("../res/images/step1.png");
+}
+
+.step2{
+    background-image: url("../res/images/step2.png");
+}
+
+.step3{
+    background-image: url("../res/images/step3.png");
+}
+
+textarea:focus, input:focus, select:focus{
+    outline: none;
+}
+
+.search-area{
+    margin-top: 10vh;
+    background-color: #ffffff;
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    height: auto;
+    border-top-left-radius:50px;
+    border-top-right-radius:50px;
+    text-align: center;
+}
+
+.search-area-content{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+
+    
+}
+
+.search-area-content input:first-child {
+    width: 100%;
+    color: #074F51;
+    height: 35px;
+    border-radius: 40px;
+    border-color: #074F51;
+    border-style: solid;
+    text-indent: 20px;
+}
+
+
+.search-results{
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.search-result-item{
+    margin-top: 20px;    
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    background-color: rgba(7,79,81, 0.03);
+    margin-left: 10%;
+    width:90%;
+    border-top-left-radius:28px;
+    border-bottom-left-radius:28px;
+    overflow: hidden;
+    text-align: left;
+}
+
+.search-result-item-img{
+   background-image: url("../res/images/resturant.jpg");
+   background-position: center;
+   background-size: contain;
+}
+
+.search-result-item-info{
+    padding-left: 20px;
+}
+
+.search-showMoreButton{
+    display:inline-block;
+    padding:0.4em 1.2em;
+    margin:0 0.3em 0.3em 0;
+    border-radius:2em;
+    box-sizing: border-box;
+    text-decoration:none;
+    color:#FFFFFF;
+    background-color:#EBA921;
+    text-align:center;
+    transition: all 0.2s;
+}
+
+.resturant-details-container{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.resturant-details-container-info{
+
+}
+
+.resturant-details-container-info-title{
+    font-size: 1.8em;
+}
+
+.resturant-details-container-info-location{
+    display: inline;
+}
+
+.resturant-details-container-info-type{
+    display: inline;
+}
+
+.resturant-details-container-buybox{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(7,79,81, 0.08);
+    border-radius:25px;
+}
+
+.resturant-details-container-buybox-pricecontrol{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.resturant-details-container-buybox-pricecontrol{
+}
+.resturant-details-container-buybox-pricecontrol a{
+    background: #97c83e;
+    text-align: center;
+    width: 149px;
+    height: 148px;
+    border-radius: 100%;
+    display: inline-block;
+    font-size: 35px;
+    vertical-align: middle;
+    color: white;
+    font-weight: bold;
+    text-decoration: none
+}
+
+.resturant-details-container-buybox-pricecontrol a span {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .resturant-details-container-buybox-pricecontrol a:after {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+  }
+
+.donation-selector{
+    width: 100%;
+    background-color: #ffffff;
+    color: #074F51;
+    height: 35px;
+    border-radius: 40px;
+    border-color: #074F51;
+    border-style: solid;
+    text-indent: 20px;
+}
+
+
+
+
+
+.switch {
+    position: relative;
+    height: 26px;
+    width: 100%;
+    margin: 20px auto;
+    background: #ffffff;
+    border-radius: 2em;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .switch-label {
+    position: relative;
+    z-index: 2;
+    float: left;
+    line-height: 26px;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.35);
+    text-align: center;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.45);
+    cursor: pointer;
+  }
+  .switch-label:active {
+    font-weight: bold;
+  }
+  
+  .switch-label-off {
+    padding-left: 2px;
+  }
+  
+  .switch-label-on {
+    padding-right: 2px;
+  }
+  
+  
+  .switch-input {
+    display: none;
+  }
+  .switch-input:checked + .switch-label {
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.65);
+    text-shadow: 0 1px rgba(255, 255, 255, 0.25);
+    -webkit-transition: 0.15s ease-out;
+    -moz-transition: 0.15s ease-out;
+    -ms-transition: 0.15s ease-out;
+    -o-transition: 0.15s ease-out;
+    transition: 0.15s ease-out;
+    -webkit-transition-property: color, text-shadow;
+    -moz-transition-property: color, text-shadow;
+    -ms-transition-property: color, text-shadow;
+    -o-transition-property: color, text-shadow;
+    transition-property: color, text-shadow;
+  }
+  .switch-input:checked + .switch-label-on ~ .switch-selection {
+    left: 50%;
+    /* Note: left: 50%; doesn't transition in WebKit */
+  }
+  
+  .switch-selection {
+    position: absolute;
+    z-index: 1;
+    top: 2px;
+    left: 2px;
+    display: block;
+    width: 58px;
+    height: 22px;
+    border-radius: 3px;
+    background-color: #65bd63;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #9dd993), color-stop(100%, #65bd63));
+    background-image: -webkit-linear-gradient(top, #9dd993, #65bd63);
+    background-image: -moz-linear-gradient(top, #9dd993, #65bd63);
+    background-image: -ms-linear-gradient(top, #9dd993, #65bd63);
+    background-image: -o-linear-gradient(top, #9dd993, #65bd63);
+    background-image: linear-gradient(top, #9dd993, #65bd63);
+    -webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.5), 0 0 2px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 1px rgba(255, 255, 255, 0.5), 0 0 2px rgba(0, 0, 0, 0.2);
+    -webkit-transition: left 0.15s ease-out;
+    -moz-transition: left 0.15s ease-out;
+    -ms-transition: left 0.15s ease-out;
+    -o-transition: left 0.15s ease-out;
+    transition: left 0.15s ease-out;
+  }
+  .switch-blue .switch-selection {
+    background-color: #3aa2d0;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #4fc9ee), color-stop(100%, #3aa2d0));
+    background-image: -webkit-linear-gradient(top, #4fc9ee, #3aa2d0);
+    background-image: -moz-linear-gradient(top, #4fc9ee, #3aa2d0);
+    background-image: -ms-linear-gradient(top, #4fc9ee, #3aa2d0);
+    background-image: -o-linear-gradient(top, #4fc9ee, #3aa2d0);
+    background-image: linear-gradient(top, #4fc9ee, #3aa2d0);
+  }
+ 
