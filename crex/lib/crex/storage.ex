@@ -68,6 +68,14 @@ defmodule Crex.Storage do
     )
   end
 
+  def all(table) do
+    select(
+      min_key: {table, []},
+      max_key: {String.to_atom(to_string(table) <> "_a"), []},
+      pipe: [take: 100]
+    )
+  end
+
   def storage_key(%Crex.Business{id: id}), do: {:business, id}
   def storage_key(%Crex.User{id: id}), do: {:user, id}
 
