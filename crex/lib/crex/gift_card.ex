@@ -1,6 +1,15 @@
 defmodule Crex.GiftCard do
   require Record
-  defstruct [:identifier, :createdAt, :business, :owner, version: 1, transactions: []]
+
+  defstruct [
+    :identifier,
+    :createdAt,
+    :business,
+    :owner,
+    :expiresOn,
+    version: 1,
+    transactions: []
+  ]
 
   Record.defrecordp(:transaction, [:amount, :description, :timestamp])
 
@@ -10,6 +19,7 @@ defmodule Crex.GiftCard do
       owner: Keyword.fetch!(opts, :owner),
       identifier: Crex.Utils.generate_id(5),
       createdAt: DateTime.utc_now(),
+      expiresOn: Date.utc_today() |> Date.add(365),
       transactions: []
     }
   end
@@ -20,7 +30,7 @@ defmodule Crex.GiftCard do
 
   def redeem(gift_card, amount, description) when amount > 0 do
     if current_value(gift_card) - amount < 0 do
-      {:error, :insufficient_amount, gift_card}
+      {:insufficient_amount, gift_card}
     else
       {:ok,
        add_transaction(

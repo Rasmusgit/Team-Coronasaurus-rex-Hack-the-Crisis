@@ -31,4 +31,14 @@ defmodule CommandControllerTest do
       assert conn.status == 422, inspect(conn.resp_body, pretty: true)
     end
   end
+
+  describe "POST /api/ping" do
+    test "", %{conn: conn} do
+      conn =
+        conn
+        |> post("/api/ping", %{})
+
+      assert conn.status == 200, inspect(conn.resp_body, pretty: true)
+    end
+  end
 end

@@ -1,5 +1,30 @@
 defmodule ParamSchema do
   defmodule ValidationHelpers do
+    def validate_exists(changeset, field, _namespace) do
+      changeset
+      |> Ecto.Changeset.validate_change(field, fn
+        :owner, user_id ->
+          Crex.Users.find(user_id)
+          |> case do
+            {:ok, _} -> []
+            _ -> [owner: "no user with that id"]
+          end
+
+        :business, business_id ->
+          Crex.Businesses.find(business_id)
+          |> case do
+            {:ok, _} -> []
+            _ -> [business: "no business with that id"]
+          end
+
+        :gift_card, card_id ->
+          Crex.GiftCards.find(card_id)
+          |> case do
+            {:ok, _} -> []
+            _ -> [gift_card: "no such gift_card"]
+          end
+      end)
+    end
   end
 
   defmodule ValidationError do
@@ -59,29 +84,8 @@ defmodule ParamSchema do
   end
 
   def build_return(%{valid?: false} = changeset) do
-    {:error, %ValidationError{errors: extract_errors(changeset), changeset: changeset}}
+    {:error, %ValidationError{errors: traverse_errors(changeset), changeset: changeset}}
   end
-
-  def extract_errors(%{valid?: false} = changeset) do
-    embedded_errors =
-      Enum.filter(changeset.types, fn
-        {_, {:embed, _embed}} -> true
-        _ -> false
-      end)
-      |> Enum.map(&elem(&1, 0))
-      |> Enum.map(fn key ->
-        embed_errors =
-          Ecto.Changeset.get_change(changeset, key)
-          |> extract_errors()
-
-        {key, embed_errors}
-      end)
-      |> Enum.reject(&match?({_, []}, &1))
-
-    Map.new(changeset.errors ++ embedded_errors)
-  end
-
-  def extract_errors(_), do: []
 
   defp cast_embeds(changeset, []), do: changeset
 
@@ -89,5 +93,13 @@ defmodule ParamSchema do
     changeset
     |> Ecto.Changeset.cast_embed(embed)
     |> cast_embeds(embeds)
+  end
+
+  defp traverse_errors(changeset) do
+    Ecto.Changeset.traverse_errors(changeset, fn {msg, opts} ->
+      Enum.reduce(opts, msg, fn {key, value}, acc ->
+        String.replace(acc, "%{#{key}}", to_string(value))
+      end)
+    end)
   end
 end

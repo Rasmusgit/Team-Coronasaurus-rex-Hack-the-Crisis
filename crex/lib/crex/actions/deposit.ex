@@ -15,25 +15,6 @@ defmodule Crex.Actions.Deposit do
     |> validate_exists(:business, :business)
   end
 
-  def validate_exists(changeset, field, _namespace) do
-    changeset
-    |> validate_change(field, fn
-      :owner, user_id ->
-        Crex.Users.find(user_id)
-        |> case do
-          {:ok, _} -> []
-          _ -> [owner: "no user with that id"]
-        end
-
-      :business, business_id ->
-        Crex.Businesses.find(business_id)
-        |> case do
-          {:ok, _} -> []
-          _ -> [business: "no business with that id"]
-        end
-    end)
-  end
-
   defp process(deposit, _ctx) do
     {:ok, existing_cards} = Crex.Storage.get_cards_for_user(deposit.owner)
 
